@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "FOFA端口查询助手",
+  "version": "1.0",
+  "description": "获取当前页面URL并通过FOFA API显示开放端口等信息",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "author": "maikefee",
+  "homepage_url": "https://github.com/Maikefee",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  }
+} 

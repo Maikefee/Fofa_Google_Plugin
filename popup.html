@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>FOFA端口查询助手</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; width: 380px; margin: 0; background: #f7f9fa; }
+    h3 { margin: 16px 0 8px 0; text-align: center; }
+    .section { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; margin: 12px; padding: 16px; }
+    label { display: block; margin-bottom: 8px; }
+    input[type="text"], input[type="password"] { width: 90%; padding: 4px 8px; margin-top: 2px; border-radius: 4px; border: 1px solid #ccc; }
+    button { margin-top: 8px; padding: 6px 16px; border-radius: 4px; border: none; background: #0078d7; color: #fff; cursor: pointer; }
+    button:hover { background: #005fa3; }
+    .table-wrapper { overflow-x: auto; width: 100%; }
+    table { border-collapse: collapse; width: 100%; min-width: 600px; word-break: break-all; }
+    th, td { border: 1px solid #e0e0e0; padding: 6px 8px; text-align: left; white-space: pre-line; }
+    th { background: #f0f4f8; }
+    tr:nth-child(even) { background: #f9fbfc; }
+    tr:hover { background: #e6f7ff; }
+    .stats-table { margin-top: 8px; }
+    .stat-title { font-weight: bold; margin-top: 10px; }
+    .error { color: #d32f2f; margin-top: 8px; }
+    .success { color: #388e3c; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h3>FOFA端口查询助手</h3>
+  <div class="section">
+    <label>FOFA Email: <input id="email" type="text"></label>
+    <label>FOFA Key: <input id="key" type="password"></label>
+    <button id="save">保存API信息</button>
+  </div>
+  <div class="section">
+    <button id="export" style="float:right;margin-top:8px;">导出CSV</button>
+    <button id="refresh" style="float:right;margin-top:8px;margin-right:8px;background:#4caf50;">刷新</button>
+    <div class="table-wrapper" id="result">正在自动查询...</div>
+  </div>
+  <div class="section" id="stats">统计信息加载中...</div>
+  <footer style="text-align:center;font-size:12px;color:#888;margin:8px 0 0 0;">
+    作者：<a href="https://github.com/Maikefee" target="_blank" style="color:#0078d7;text-decoration:none;">maikefee</a>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html> 
