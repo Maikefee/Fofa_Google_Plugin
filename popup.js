@@ -8,6 +8,16 @@ document.getElementById('save').onclick = function() {
 
 let lastResults = [];
 
+// 提取根域名函数
+function getRootDomain(hostname) {
+  const parts = hostname.split('.');
+  if (parts.length <= 2) {
+    return hostname;
+  }
+  // 返回最后两个部分，例如 www.example.com -> example.com
+  return parts.slice(-2).join('.');
+}
+
 window.onload = function() {
   chrome.storage.local.get(['fofa_email', 'fofa_key'], function(data) {
     if (data.fofa_email) document.getElementById('email').value = data.fofa_email;
@@ -31,7 +41,7 @@ async function autoQuery() {
       lastResults = [];
       return;
     }
-    let host = url.hostname;
+    let host = getRootDomain(url.hostname);
     chrome.storage.local.get(['fofa_email', 'fofa_key'], async function(data) {
       if (!data.fofa_email || !data.fofa_key) {
         document.getElementById('result').innerHTML = '请先填写FOFA API信息';
@@ -40,7 +50,7 @@ async function autoQuery() {
         return;
       }
       let fields = ['host','ip','port','protocol','title','os'];
-      let q = `host="${host}"`;
+      let q = host;
       let qbase64 = btoa(q);
       let api = `https://fofa.info/api/v1/search/all?email=${encodeURIComponent(data.fofa_email)}&key=${encodeURIComponent(data.fofa_key)}&qbase64=${qbase64}&fields=${fields.join(',')}`;
       try {
